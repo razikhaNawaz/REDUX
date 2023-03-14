@@ -1,21 +1,27 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { AuthSliceAction } from '../store/AuthSlice'
+import { CounterSliceAction } from '../store/CounterSlice'
 
 const Counter = () => {
     const dispatch=useDispatch()
-    const counter=useSelector((state)=>state.counter)
+    const counter=useSelector((state)=>state.Counter.counter)
 
     const incrementHandler=()=>{
-        dispatch({type:'INCREMENT'})
+        dispatch(CounterSliceAction.increment())
     }
     const decrementHandler=()=>{
-        dispatch({type:'DECREMENT'})
+        dispatch(CounterSliceAction.decrement())
     }
     const incrementby5Handler=()=>{
-        dispatch({type:'INCREMENTBY5'})
+        dispatch(CounterSliceAction.INCREMENTBY5())
     }
     const decrementby5Handler=()=>{
-        dispatch({type:'DECREMENTBY5'})
+        dispatch(CounterSliceAction.DECREMENTBY5())
+    }
+
+    const logoutHandler=()=>{
+        dispatch(AuthSliceAction.logout())
     }
   return (
     <div>
@@ -25,6 +31,7 @@ const Counter = () => {
     <button onClick={decrementHandler}>decrement</button>
     <button onClick={incrementby5Handler}>incrementby5</button>
     <button onClick={decrementby5Handler}>decrementby5</button>
+    <button type="button" onClick={logoutHandler}>Logout</button>
     </div>
   )
 }
