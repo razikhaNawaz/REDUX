@@ -5,33 +5,36 @@ import { CounterSliceAction } from '../store/CounterSlice'
 
 const Counter = () => {
     const dispatch=useDispatch()
-    const counter=useSelector((state)=>state.Counter.counter)
+    const counter=useSelector((state)=>state.increment.counter)
+    const counter2=useSelector((state)=>state.increment.counter2)
+    const toggle=useSelector((state)=>state.toggle1.toggle)
 
     const incrementHandler=()=>{
-        dispatch(CounterSliceAction.increment())
+        dispatch({type:'INCREMENT'})
     }
     const decrementHandler=()=>{
-        dispatch(CounterSliceAction.decrement())
+        dispatch({type:'DECREMENT'})
     }
     const incrementby5Handler=()=>{
-        dispatch(CounterSliceAction.INCREMENTBY5())
+        dispatch({type:'INCREMENTBY5'})
     }
-    const decrementby5Handler=()=>{
-        dispatch(CounterSliceAction.DECREMENTBY5())
+    const toggleHandler=()=>{
+        dispatch({type:'toggle'})
     }
 
-    const logoutHandler=()=>{
-        dispatch(AuthSliceAction.logout())
-    }
+    // const logoutHandler=()=>{
+    //     dispatch(AuthSliceAction.logout())
+    // }
   return (
     <div>
     <div>counter</div>
     <div>{counter}</div>
+    {toggle && <div>{counter2}</div>}
     <button onClick={incrementHandler}>increment</button>
     <button onClick={decrementHandler}>decrement</button>
     <button onClick={incrementby5Handler}>incrementby5</button>
-    <button onClick={decrementby5Handler}>decrementby5</button>
-    <button type="button" onClick={logoutHandler}>Logout</button>
+    <button onClick={toggleHandler}>toggle</button>
+    {/* <button type="button" onClick={logoutHandler}>Logout</button> */}
     </div>
   )
 }

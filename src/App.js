@@ -5,12 +5,13 @@ import Authentication from './component/Authentication';
 import { useSelector } from 'react-redux';
 
 function App() {
-  const authenticate=useSelector((state)=>state.Authenticate.isAuthenticate)
+  // const authenticate=useSelector((state)=>state.Authenticate.isAuthenticate)
   return (
     <div className="App">
       {/* {!authenticate && <Authentication />}
       {authenticate && <Counter />} */}
-      {authenticate ? <Counter /> : <Authentication />}
+      {/* {authenticate ? <Counter /> : <Authentication />} */}
+      <Counter />
     </div>
   );
 }
